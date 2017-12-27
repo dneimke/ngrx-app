@@ -9,13 +9,12 @@ import { TagBoard } from "../../models/tagboard.model";
   selector: "list",
   template: `
     <h2>List</h2>
-    <button (click)='onNavigate()'>Navigate to Item</button>
     <div *ngIf="!((tagBoards$ | async)?.length)">
       No TagBoards, add one to get started.
     </div>
     <tagboard-item
       *ngFor="let tagBoard of (tagBoards$ | async)"
-      [tagBoard]="tagBoard">
+      [board]="tagBoard">
     </tagboard-item>
   `,
   styleUrls: ["./list.component.css"]
@@ -23,18 +22,11 @@ import { TagBoard } from "../../models/tagboard.model";
 export class ListComponent implements OnInit {
   tagBoards$: Observable<TagBoard[]>;
 
-  constructor(private store: Store<fromStore.EntitiesState>) {}
+  constructor(private store: Store<fromStore.EntitiesState>) {
+    this.store.dispatch(new fromStore.LoadTagBoards());
+  }
 
   ngOnInit(): void {
     this.tagBoards$ = this.store.select(fromStore.getAllTagBoards);
-  }
-
-  onNavigate() {
-    console.log("onNavigate::", this.store);
-    this.store.dispatch(
-      new fromRoot.Go({
-        path: ["/boards/new"]
-      })
-    );
   }
 }

@@ -1,5 +1,5 @@
-import { TagBoardsService } from "./TagBoardsService";
+import { TagBoardsService } from "./tagboards.service";
 
 export const services: any[] = [TagBoardsService];
 
-export * from "./TagBoardsService";
+export * from "./tagboards.service";
