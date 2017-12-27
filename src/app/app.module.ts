@@ -39,14 +39,10 @@ import * as fromContainers from "./containers";
 
 // routes
 export const ROUTES: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "list" },
+  { path: "", pathMatch: "full", redirectTo: "boards" },
   {
-    path: "list",
-    component: fromContainers.ListComponent
-  },
-  {
-    path: "item",
-    component: fromContainers.ItemComponent
+    path: "boards",
+    loadChildren: "../tagboards/tagboards.module#TagBoardsModule"
   }
 ];
 
