@@ -12,10 +12,10 @@ import { TagBoard } from "../../models/tagboard.model";
     <div *ngIf="!((tagBoards$ | async)?.length)">
       No TagBoards, add one to get started.
     </div>
-    <tagboard-item
+    <tagboard-list-item
       *ngFor="let tagBoard of (tagBoards$ | async)"
       [board]="tagBoard">
-    </tagboard-item>
+    </tagboard-list-item>
   `,
   styleUrls: ["./list.component.css"]
 })

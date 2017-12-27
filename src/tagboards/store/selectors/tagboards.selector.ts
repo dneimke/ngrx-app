@@ -27,7 +27,7 @@ export const getSelectedTagBoard = createSelector(
   getTagBoardsEntities,
   fromRoot.getRouterState,
   (entities, router): TagBoard => {
-    return router.state && entities[router.state.params.boardId];
+    return router.state && entities[router.state.params.boardid];
   }
 );
 
